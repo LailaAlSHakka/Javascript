@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laila Al Shakka's Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7e1d7;
+            color: #333;
+        }
+
+        header {
+            background-color: #f9c8d2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e63e70;
+            font-size: 36px;
+        }
+
+        nav {
+            background-color: #e63e70;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        section {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            color: #f582a1;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .content img:hover {
+            transform: scale(1.02);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .contact-form button {
+            background-color: #e63e70;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #f582a1;
+        }
+
+        footer {
+            background-color: #f9c8d2;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            color: #e63e70;
+            font-size: 14px;
+        }
+
+        .video-section iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 10px;
+        }
+
+        .image-section {
+            text-align: center;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Laila Al Shakka</h1>
+        <p>Welcome to my personal website!</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#photos">Photos</a>
+        <a href="#contact">Contact</a>
+        <a href="#videos">Videos</a>
+    </nav>
+
+    <section id="home">
+        <h2>About Me</h2>
+        <p>Hello! I'm Laila Al Shakka, a passionate student with a love for creativity, learning, and sharing. I enjoy exploring new hobbies and challenges and am excited to continue growing!</p>
+    </section>
+
+    <section id="photos" class="image-section">
+        <h2>My Photos</h2>
+        <div class="content">
+            <img src="https://cdn.pixabay.com/photo/2022/04/14/20/59/strawberries-7133242_1280.jpg" alt="Strawberry Photo">
+            <img src="https://cdn.pixabay.com/photo/2022/04/14/20/59/strawberries-7133242_1280.jpg" alt="Strawberry Photo">
+            <img src="https://cdn.pixabay.com/photo/2022/04/14/20/59/strawberries-7133242_1280.jpg" alt="Strawberry Photo">
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="#" method="POST" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write your message here" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="videos" class="video-section">
+        <h2>Watch</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/aAJSuU3vjZc?si=dDuDqnYm2kvOtjHp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Laila Al Shakka. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged Image">
+    </div>
+
+    <!-- JavaScript for Lightbox -->
+    <script>
+        const images = document.querySelectorAll('.content img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+        }
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+
+</html>
